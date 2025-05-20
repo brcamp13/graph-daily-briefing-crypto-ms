@@ -1,0 +1,35 @@
+syntax = "proto3";
+
+package crypto;
+
+service CryptoService {
+  rpc GetCryptoCurrencies (CryptoRequest) returns (CryptoResponse);
+  rpc GetCryptoMarketData (MarketDataRequest) returns (MarketDataResponse);
+}
+
+message CryptoRequest {
+  repeated string slugs = 1;  // List of cryptocurrency slugs, e.g., ["bitcoin", "ethereum"]
+}
+
+message CryptoResponse {
+  repeated CryptoCurrency currencies = 1;
+}
+
+message CryptoCurrency {
+  string name = 1;
+  string symbol = 2;
+  double price = 3;
+  double marketCap = 4;
+  double percentChange24h = 5;
+  double percentChange60d = 6;
+  double percentChange90d = 7;
+}
+
+message MarketDataRequest {
+  // Empty, as no input is required for cryptoMarketData
+}
+
+message MarketDataResponse {
+  int32 fearAndGreedIndexValue = 1;
+  string fearAndGreedIndexValueClassification = 2;
+}
