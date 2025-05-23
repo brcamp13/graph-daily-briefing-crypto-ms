@@ -2,6 +2,9 @@ syntax = "proto3";
 
 package crypto;
 
+option java_package = "com.bmcapps.graphdailybriefingcrypto";
+option java_multiple_files = true;
+
 service CryptoService {
   rpc GetCryptoCurrencies (CryptoRequest) returns (CryptoResponse);
   rpc GetCryptoMarketData (MarketDataRequest) returns (MarketDataResponse);
